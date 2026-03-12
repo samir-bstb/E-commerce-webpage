@@ -1,0 +1,125 @@
+/* Fondo borroso al hacer hover */
+.blur-overlay {
+  position: fixed;
+  top: 80px; /* debajo del navbar fijo */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 500;
+}
+
+/* Submenú desplegable */
+.submenu {
+  position: absolute;
+  top: 100%; /* justo debajo del navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgb(244, 244, 244);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.submenu ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu li {
+  font-weight: 250;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.navbar {
+  position: fixed;           /* Fijar en la parte superior */
+  top: 0;
+  width: 100%;
+  background-color: #ffffff; /* Color gris claro */
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;  
+  font-size: 25px;
+  height: 70px;
+  gap: 13rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 10rem;
+  margin-right: 100px;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.nav-links a:hover {
+  animation: rgb-gamer 1.3s linear infinite;
+}
+
+@keyframes rgb-gamer {
+  0%   { color: #ff0000; }   
+  20%  { color: #ff9900; }   
+  40%  { color: #ffff00; }   
+  60%  { color: #00ff00; }  
+  80%  { color: #00ffff; }   
+  100% { color: #ff00ff; }   
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color:black;
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+.logo-area:hover {
+  animation: rgb-gamer 1.3s linear infinite;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.fa-solid.fa-cart-shopping {
+  margin-top: 5px;
+  font-size: 2rem;
+}
+
+.fa-solid.fa-cart-shopping:hover {
+  animation: rgb-gamer 1.3s linear infinite;
+}
+
+.fa-solid.fa-circle-user{
+    margin-top: 5px;
+    font-size: 2.2rem;
+}
+
+.fa-solid.fa-circle-user:hover{
+  animation: rgb-gamer 1.3s linear infinite;
+}
