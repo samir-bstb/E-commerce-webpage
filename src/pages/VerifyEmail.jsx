@@ -1,23 +1,60 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 function VerifyEmail(){
 
     const [params] = useSearchParams();
     const [message, setMessage] = useState("Verifying email...");
+    const [status, setStatus] = useState("loading");
+
     const token = params.get("token");
+    const executed = useRef(false);
 
     useEffect(() => {
-        fetch(`http://192.168.0.104:4000/api/auth/verify-email?token=${token}`)
-        .then(res => res.json())
-        .then(data => {
-            setMessage("Email varified successfully");
-        })
-        .catch(() => { 
-            setMessage("Invalid or expired verification link");
-        });
 
-    }, []);
+        if (executed.current) return;
+        executed.current = true;
+
+        if (!token) {
+            setStatus("error");
+            setMessage("Invalid verification link");
+            return;
+        }
+
+        const verify = async () => {
+            try {
+
+                const res = await fetch(
+                    `http://192.168.0.104:4000/api/auth/verify-email?token=${token}`
+                );
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || "Verification failed");
+                }
+
+                setStatus("success");
+                setMessage("Email verified successfully");
+                setTimeout(() => {
+                    setMessage("Email verified successfully");
+                }, 2500);
+
+                setTimeout(() => {
+                    setMessage("You can close this window now.");
+                }, 2500);
+
+            } catch (error) {
+
+                setStatus("error");
+                setMessage(error.message || "Invalid or expired verification link");
+
+            }
+        };
+
+        verify();
+
+    }, [token]);
 
     return(
         <div>

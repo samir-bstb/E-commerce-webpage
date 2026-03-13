@@ -90,7 +90,7 @@ function Signin() {
                 <p className="label">Confirm Password</p>
                 <div className="password-field">
                     <input 
-                        type="password"
+                        type={showConfirmPwd ? "text" : "password"}
                         placeholder="Confirm Password"
                         value = {confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
