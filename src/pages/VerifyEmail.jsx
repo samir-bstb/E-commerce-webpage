@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import "../CSS/VerifyEmail.css";
 
 function VerifyEmail(){
 
@@ -57,7 +58,7 @@ function VerifyEmail(){
     }, [token]);
 
     return(
-        <div>
+        <div className="verify-container">
             <h2>{message}</h2>
         </div>
     );
