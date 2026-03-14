@@ -58,9 +58,11 @@ function VerifyEmail(){
     }, [token]);
 
     return(
-        <div className="verify-container">
-            <h2>{message}</h2>
-        </div>
+        <div className="verify-page">
+           <div className="verify-container">
+                <h2>{message}</h2>
+            </div> 
+        </div>  
     );
 }
 
