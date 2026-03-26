@@ -1,13 +1,35 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../Images/logo.png';
 import "../CSS/Navbar.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect  } from "react";
 
 function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const timeoutRef = useRef(null);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLogin = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    /* 
+    !"abc"   → false
+    !!"abc"  → true
+
+    !null    → true
+    !!null   → false
+    */
+
+    checkLogin(); //
+
+    window.addEventListener("storage", checkLogin); //if localStorage changes, so does isLoggedIn 
+
+    return () => {
+      window.removeEventListener("storage", checkLogin); //cleans the listener when the components is dismounted
+    };
+  }, []);
 
   const handleProfileClick = () => {
     if (isLoggedIn) {

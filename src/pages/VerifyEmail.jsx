@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import "../CSS/VerifyEmail.css";
 
 function VerifyEmail(){
-
+    const navigate = useNavigate();
     const [params] = useSearchParams();
     const [message, setMessage] = useState("Verifying email...");
     const [status, setStatus] = useState("loading");
@@ -38,13 +38,9 @@ function VerifyEmail(){
                 setStatus("success");
                 setMessage("Email verified successfully");
                 setTimeout(() => {
-                    setMessage("Email verified successfully");
-                }, 2500);
-
-                setTimeout(() => {
-                    setMessage("You can close this window now.");
-                }, 2500);
-
+                    navigate("/login");
+                }, 3000);
+                
             } catch (error) {
 
                 setStatus("error");

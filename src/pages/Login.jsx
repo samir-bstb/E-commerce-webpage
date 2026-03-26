@@ -46,7 +46,8 @@ function Login() {
         return;
       }
 
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.token); //global token for authentication
+      window.dispatchEvent(new Event("storage"));
       console.log("Login succesful");
       navigate("/");
 
